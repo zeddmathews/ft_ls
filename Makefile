@@ -6,7 +6,7 @@
 #    By: zmathews <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/02 13:31:14 by zmathews          #+#    #+#              #
-#    Updated: 2019/09/03 01:58:02 by zmathews         ###   ########.fr        #
+#    Updated: 2019/09/06 16:54:19 by zmathews         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ LIBFT_PATH = ./libft/
 SRC_PATH = ./srcs/
 
 SRCS = ft_ls.c \
-	  flags.c \
+	  flag_things.c \
 	  is_flag.c \
 	  dash_a.c \
 
