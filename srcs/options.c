@@ -12,19 +12,63 @@
 
 #include "../includes/ft_ls.h"
 
-void	dash_a(char *str, char *path)
+t_ls	*store(char *path)
 {
-	int i;
-	DIR *d_stream;
-	struct dirent *sd;
+	t_ls		*tmp;
+	t_ls		*head;
+	DIR		*d_stream;
+	struct dirent	*sd;
 
-	i = 1;
-	if (!(d_stream = opendir(path)))
-		return ;
-	while (str[i])
+	tmp = (t_ls *)malloc(sizeof(t_ls));
+	head = tmp;
+	d_stream = opendir(path);
+	while (sd = readdir(d_stream))
 	{
-		while ((sd = readdir(d_stream)))
-			ft_putendl(sd->d_name);
-		i++;
+		tmp->store = sd->d_name;
+		tmp->fw = (t_ls *)malloc(sizeof(t_ls));
+		tmp = tmp->fw;
 	}
+	tmp->fw = NULL;
+	tmp = head;
+	return (tmp);
+}
+
+t_ls	*dash_l(char *path)
+{
+	struct stat	*ss;
+
+}
+
+t_ls	*dash_R(char *path)
+{
+	typedef struct		s_list
+	{
+		char		*name;
+		char		*type;
+		struct s_list 	*next;
+	}			t_list;
+	t_list		*tmp;
+	t_list		*head;
+	DIR		*d_stream;
+	struct dirent	*sd;
+
+	tmp = (t_list *)malloc(sizeof(t_list));
+	d_stream = opendir(path);
+	while (sd = readdir(d_stream))
+	{
+		if (sd->d_type == DT_DIR)
+		{
+			if (ft_strcmp(d_name , ".") == 0)
+			{
+				tmp = tmp->next;
+				continue ;
+			}
+			else
+				tmp->name = sd->d_name;
+				tmp->type = sd->d_type;
+				tmp->next = (t_list *)malloc(sizeof(t_list));
+				tmp = tmp->next;
+		}
+	}
+
 }

@@ -15,10 +15,20 @@
 
 # include <dirent.h>
 # include <sys/types.h>
+# include <sys/stat.h>
 # include "../libft/libft.h"
 
+typedef struct		s_ls
+{
+	char		*store;
+	struct s_ls	*fw;
+}			t_ls;
+
 void	flag_things(char *str);
-int		is_flag(char *str);
-void	dash_a(char *str, char *path);
+int	is_flag(char *str);
+t_ls	*dash_a(char *path);
+t_ls	*no_options(char *path);
+void	sort_a(t_ls *tmp);
+
 
 #endif
