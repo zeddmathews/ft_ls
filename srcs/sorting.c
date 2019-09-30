@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <string.h>
 
-int		ft_strcmp(const char *s1, const char *s2)
+/*int		ft_strcmp(const char *s1, const char *s2)
 {
 	unsigned const char	*str1;
 	unsigned const char	*str2;
@@ -20,28 +20,7 @@ int		ft_strcmp(const char *s1, const char *s2)
 		i++;
 	return (str1[i] - str2[i]);
 }
-
-/*t_ls	*something_here(char *path)
-  {
-  t_ls		*tmp;
-  t_ls		*head;
-  DIR		*d_stream;
-  struct dirent	*sd;
-
-  tmp = (t_ls *)malloc(sizeof(t_ls));
-  head = tmp;
-  d_stream = opendir(path);
-  while (sd = readdir(d_stream))
-  {
-  tmp->store = sd->d_name;
-  tmp->fw = (t_ls *)malloc(sizeof(t_ls));
-  tmp = tmp->fw;
-  }
-  tmp->fw = NULL;
-  tmp = head;
-  return (tmp);
-  }
-  */
+*/
 void	sort_a(t_ls *tmp)
 {
 	t_ls		*head;
@@ -68,6 +47,7 @@ void	sort_a(t_ls *tmp)
 
 int	main(int ac, char **av)
 {
+	/*(void)ac;
 	t_ls *test;
 	test = dash_a(".");
 	sort_a(test);
@@ -89,6 +69,10 @@ int	main(int ac, char **av)
 		}
 		printf("%s\n", test->store);
 		test = test->fw;
-	}
+	}*/
+	t_ls	*hold;
+	hold = current_store(".");
+	if (ac >= 2)
+		print_flag(hold, av[1]);
 	return (0);
 }

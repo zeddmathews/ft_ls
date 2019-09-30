@@ -6,13 +6,13 @@
 /*   By: zmathews <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/03 01:11:46 by zmathews          #+#    #+#             */
-/*   Updated: 2019/09/06 16:47:29 by zmathews         ###   ########.fr       */
+/*   Updated: 2019/09/30 12:30:25 by zmathews         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_ls.h"
 
-t_ls	*store(char *path)
+t_ls	*current_store(char *path)
 {
 	t_ls		*tmp;
 	t_ls		*head;
@@ -22,7 +22,7 @@ t_ls	*store(char *path)
 	tmp = (t_ls *)malloc(sizeof(t_ls));
 	head = tmp;
 	d_stream = opendir(path);
-	while (sd = readdir(d_stream))
+	while ((sd = readdir(d_stream)))
 	{
 		tmp->store = sd->d_name;
 		tmp->fw = (t_ls *)malloc(sizeof(t_ls));
@@ -33,42 +33,38 @@ t_ls	*store(char *path)
 	return (tmp);
 }
 
-t_ls	*dash_l(char *path)
+/*t_ls	*dash_l(char *path)
 {
 	struct stat	*ss;
 
-}
-
-t_ls	*dash_R(char *path)
+}*/
+/*
+t_list	*dash_R(char *path)
 {
-	typedef struct		s_list
-	{
-		char		*name;
-		char		*type;
-		struct s_list 	*next;
-	}			t_list;
 	t_list		*tmp;
 	t_list		*head;
 	DIR		*d_stream;
 	struct dirent	*sd;
 
 	tmp = (t_list *)malloc(sizeof(t_list));
+	head = tmp;
 	d_stream = opendir(path);
-	while (sd = readdir(d_stream))
+	while ((sd = readdir(d_stream)))
 	{
 		if (sd->d_type == DT_DIR)
 		{
-			if (ft_strcmp(d_name , ".") == 0)
+			if (ft_strcmp(sd->d_name , ".") == 0)
 			{
 				tmp = tmp->next;
 				continue ;
 			}
 			else
 				tmp->name = sd->d_name;
-				tmp->type = sd->d_type;
 				tmp->next = (t_list *)malloc(sizeof(t_list));
 				tmp = tmp->next;
 		}
 	}
-
-}
+	tmp->next = NULL;
+	tmp = head;
+	return (tmp);
+}*/

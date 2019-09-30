@@ -1,26 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ls.c                                            :+:      :+:    :+:   */
+/*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zmathews <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/02 13:55:21 by zmathews          #+#    #+#             */
-/*   Updated: 2019/09/22 11:45:48 by zmathews         ###   ########.fr       */
+/*   Created: 2019/09/30 11:29:56 by zmathews          #+#    #+#             */
+/*   Updated: 2019/09/30 12:30:18 by zmathews         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_ls.h"
 
-/*int	main(int ac, char **av)
+int		print_flag(t_ls *list, char *flag)
 {
-	if (ac == 2)
+	t_ls	*begin;
+	begin = list;
+	sort_a(list);
+	if (is_flag(flag) && flag[1] == 'a')
 	{
-		if (is_flag(av[1]) == 1)
+		while (list->fw != NULL)
 		{
-			flag_things(av[1]);
-			return (0);
+			ft_putendl(list->store);
+			list = list->fw;
 		}
+		return (0);
+	}
+	else if (!(is_flag(flag)))
+	{
+		while (list->fw != NULL)
+		{
+			if (list->store[0] == '.')
+			{
+				list = list->fw;
+				continue ;
+			}
+			ft_putendl(list->store);
+			list = list->fw;
+		}
+		return (0);
 	}
 	return (0);
-}*/
+}
