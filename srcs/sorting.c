@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <string.h>
 
-/*int		ft_strcmp(const char *s1, const char *s2)
+int		ft_strcmp(const char *s1, const char *s2)
 {
 	unsigned const char	*str1;
 	unsigned const char	*str2;
@@ -20,7 +20,7 @@
 		i++;
 	return (str1[i] - str2[i]);
 }
-*/
+
 void	sort_a(t_ls *tmp)
 {
 	t_ls		*head;
@@ -47,32 +47,14 @@ void	sort_a(t_ls *tmp)
 
 int	main(int ac, char **av)
 {
-	/*(void)ac;
-	t_ls *test;
-	test = dash_a(".");
-	sort_a(test);
-	if (av[1] && av[1][1] == 'a')
+	t_ls	*hold;
+	hold = store_current_dir(".");
+	sort_a(hold);
+	if (ac >= 2 && av[1][1] == 'a')
 	{
-		while (test->fw != NULL)
-		{
-			printf("%s\n", test->store);
-			test = test->fw;
-		}
+		print_a(hold);
 		return (0);
 	}
-	while (test->fw != NULL)
-	{
-		if (test->store[0] == '.')
-		{
-			test = test->fw;
-			continue ;
-		}
-		printf("%s\n", test->store);
-		test = test->fw;
-	}*/
-	t_ls	*hold;
-	hold = current_store(".");
-	if (ac >= 2)
-		print_flag(hold, av[1]);
+	print_base(hold);
 	return (0);
 }

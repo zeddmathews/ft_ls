@@ -6,13 +6,13 @@
 /*   By: zmathews <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/03 01:11:46 by zmathews          #+#    #+#             */
-/*   Updated: 2019/09/30 12:30:25 by zmathews         ###   ########.fr       */
+/*   Updated: 2019/10/01 07:43:56 by zmathews         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_ls.h"
 
-t_ls	*current_store(char *path)
+t_ls	*store_current_dir(char *path)
 {
 	t_ls		*tmp;
 	t_ls		*head;
