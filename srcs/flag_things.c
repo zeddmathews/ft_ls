@@ -19,7 +19,7 @@ void	flag_things(char *str)
 	else if (str[1] == 'l')
 		ft_putendl("Does not -l");
 	else if (str[1] == 'a')
-		store_current_dir(str);
+		store_type_name(str);
 	else if (str[1] == 'r')
 		ft_putendl("Does not -r");
 	else if (str[1] == 'R')

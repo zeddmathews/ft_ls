@@ -12,7 +12,7 @@
 
 #include "../includes/ft_ls.h"
 
-t_ls	*store_current_dir(char *path)
+t_ls	*store_type_name(char *path)
 {
 	t_ls		*tmp;
 	t_ls		*head;

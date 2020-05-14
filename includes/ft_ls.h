@@ -30,7 +30,7 @@ typedef struct		s_ls
 
 void	flag_things(char *str);
 int		is_flag(char *str);
-t_ls	*store_current_dir(char *path);
+t_ls	*store_type_name(char *path);
 t_ls	*no_options(char *path);
 void	sort_a(t_ls *tmp);
 void	print_a(t_ls *list);
