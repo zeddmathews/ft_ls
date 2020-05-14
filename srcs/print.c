@@ -16,7 +16,7 @@ void	print_a(t_ls *list)
 {
 	while (list->fw != NULL)
 	{
-		ft_putendl(list->store);
+		ft_putendl(list->fileName);
 		list = list->fw;
 	}
 	return ;
@@ -25,12 +25,12 @@ void	print_base(t_ls *list)
 {
 	while (list->fw != NULL)
 	{
-		if (list->store[0] == '.')
+		if (list->fileName[0] == '.')
 		{
 			list = list->fw;
 			continue ;
 		}
-		ft_putendl(list->store);
+		ft_putendl(list->fileName);
 		list = list->fw;
 	}
 }

@@ -24,7 +24,7 @@ t_ls	*store_type_name(char *path)
 	d_stream = opendir(path);
 	while ((sd = readdir(d_stream)))
 	{
-		tmp->store = sd->d_name;
+		tmp->fileName = sd->d_name;
 		tmp->fw = (t_ls *)malloc(sizeof(t_ls));
 		tmp = tmp->fw;
 	}
@@ -32,6 +32,30 @@ t_ls	*store_type_name(char *path)
 	tmp = head;
 	return (tmp);
 }
+
+// t_ls	*store_recursive(char *path)
+// {
+// 	t_ls		*tmp;
+// 	t_ls		*head;
+// 	DIR		*d_stream;
+// 	struct dirent	*sd;
+
+// 	tmp = (t_ls *)malloc(sizeof(t_ls));
+// 	head = tmp;
+// 	d_stream = opendir(path);
+// 	while ((sd = readdir(d_stream)))
+// 	{
+// 		if (sd->d_type == DT_DIR)
+// 		{
+// 			tmp->fileName = sd->d_name;
+// 			tmp->fw = (t_ls *)malloc(sizeof(t_ls));
+// 			tmp = tmp->fw;
+// 		}
+// 	}
+// 	tmp->fw = NULL;
+// 	tmp = head;
+// 	return (tmp);
+// }
 
 /*t_ls	*dash_l(char *path)
 {

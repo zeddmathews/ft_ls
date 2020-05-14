@@ -11,21 +11,6 @@
 /* ************************************************************************** */
 
 #include "../includes/ft_ls.h"
-// #include <unistd.h>
-// void	ft_putchar(int letter)
-// {
-// 	write(1, &letter, 1);
-// }
-
-// void	ft_putendl(char *str)
-// {
-// 	int i = 0;
-// 	while (str[i])
-// 	{
-// 		ft_putchar(str[i]);
-// 		i++;
-// 	}
-// }
 
 int		is_flag(char *str)
 {
@@ -33,10 +18,3 @@ int		is_flag(char *str)
 		return (1);
 	return (0);
 }
-
-// int		main(int ac, char**av)
-// {
-// 	if (is_flag(av[1]))
-// 		ft_putendl(av[1]);
-// 	return (0);
-// }
