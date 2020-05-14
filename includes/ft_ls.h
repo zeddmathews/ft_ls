@@ -16,6 +16,10 @@
 # include <dirent.h>
 # include <sys/types.h>
 # include <sys/stat.h>
+# include <fcntl.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include <string.h>
 # include "../libft/libft.h"
 
 typedef struct		s_ls
@@ -23,6 +27,7 @@ typedef struct		s_ls
 	char		*store;
 	struct s_ls	*fw;
 }			t_ls;
+
 void	flag_things(char *str);
 int		is_flag(char *str);
 t_ls	*store_current_dir(char *path);
