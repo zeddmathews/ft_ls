@@ -18,7 +18,7 @@ SRC_PATH = ./srcs/
 
 SRCS = flag_things.c \
 	  is_flag.c \
-	  options.c \
+	  store.c \
 	  sorting.c \
 	  print.c \
 	  main.c \
