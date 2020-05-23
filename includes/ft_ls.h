@@ -14,13 +14,15 @@
 # define FT_LS_H
 
 # include <dirent.h>
-# include <sys/types.h>
-# include <sys/stat.h>
+# include <linux/types.h>
+# include <linux/stat.h>
+// # include <sys/types.h>
+// # include <sys/stat.h>
 # include <fcntl.h>
 # include <stdlib.h>
 # include <stdio.h>
 # include <string.h>
-# include "../libft/libft.h"
+# include "../libft/includes/libft.h"
 
 typedef struct		s_ls
 {
