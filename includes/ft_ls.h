@@ -24,18 +24,34 @@
 # include <string.h>
 # include "../libft/includes/libft.h"
 
-typedef struct		s_ls
+typedef struct			s_ls
 {
-	char		*fileName;
-	struct s_ls	*fw;
-}			t_ls;
+	char				*fileName;
+	struct s_ls			*fw;
+}						t_ls;
+
+typedef struct			user_data
+{
+	struct user_data	*fw;
+}						l_flag;
+
+typedef struct 			set_flag
+{
+	int					dash_a;
+	int					dash_r;
+	int					dash_t;
+	int					dash_l;
+	int					dash_R;
+	int					dir_num;
+}						is_set;
+
 
 void	flag_things(char *str);
 int		is_flag(char *str);
 t_ls	*store_type_name(char *path);
 t_ls	*no_options(char *path);
 void	sort_a(t_ls *tmp);
-void	print_a(t_ls *list);
+void	print_a(t_ls  *list);
 void	print_base(t_ls *list);
 void	sort_r(t_ls *tmp);
 t_ls	*store_recursive(char *path);
