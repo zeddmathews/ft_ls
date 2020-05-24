@@ -16,12 +16,12 @@ LIBFT_PATH = ./libft/
 
 SRC_PATH = ./srcs/
 
-SRCS = ft_ls.c \
-	  flag_things.c \
-	  is_flag.c \
-	  options.c \
-	  sorting.c \
+SRCS = parsing.c \
+	  errors.c \
+	  store.c \
+	  sort.c \
 	  print.c \
+	  main.c \
 
 FLAGS = -Wall -Werror -Wextra
 
