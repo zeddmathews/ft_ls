@@ -40,7 +40,7 @@ int		multipleDashes(char *flagString)
 	{
 		if (!ft_strchr("larRt", flagString[i]) && flagString[0] == '-')
 		{
-			ft_putstr("ls: unrecognized option '");
+			ft_putstr("ft_ls: unrecognized option '");
 			ft_putchar(flagString[i]);
 			ft_putendl("'");
 			exit(1);
@@ -61,17 +61,12 @@ int		validFlags(char *flagString)
 	{
 		if (flagString[i] == '-')
 			i++;
-		if (flagString[0] == '-' && flagString[1] == '-' && ft_strchr("larRt", flagString[i]))
-		{
-			ft_putstr("ls: option '--");
-			ft_putchar(flagString[i]);
-		}
 		if (!(ft_strchr("larRt", flagString[i])))
 		{
 			ft_putstr("ft_ls: invalid option -- '");
 			ft_putchar(flagString[i]);
 			ft_putendl("'");
-			exit (1);
+			return (0);
 		}
 		i++;
 	}

@@ -2,10 +2,19 @@
 
 int		main(int ac, char **av)
 {
-	(void)ac;
-	if (validFlags(av[1]) == 1)
+	t_ls *store;
+
+	store = NULL;
+	if (ac == 1)
 	{
-		ft_putendl("welp");
+		store = storeTypeName(".");
+		sortAscii(store);
+		printBase(store);
+	}
+	else if (ac > 1)
+	{
+		if (validFlags(av[1]) == 1)
+			ft_putendl("welp");
 	}
 	return (0);
 }
