@@ -1,6 +1,6 @@
 #include "../includes/ft_ls.h"
 
-void	sort_a(t_ls *tmp)
+void	sortAscii(t_ls *tmp)
 {
 	t_ls		*head;
 	char		*str;
@@ -24,7 +24,7 @@ void	sort_a(t_ls *tmp)
 	tmp = head;
 }
 
-void	sort_r(t_ls *tmp)
+void	sortRevAscii(t_ls *tmp)
 {
 	t_ls		*head;
 	char		*str;

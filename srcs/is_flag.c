@@ -12,7 +12,7 @@
 
 #include "../includes/ft_ls.h"
 
-int		is_flag(char *str)
+int		isFlag(char *str)
 {
 	if (str[0] == '-')
 		return (1);

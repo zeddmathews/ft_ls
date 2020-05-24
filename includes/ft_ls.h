@@ -46,14 +46,14 @@ typedef struct 			set_flag
 }						is_set;
 
 
-void	flag_things(char *str);
-int		is_flag(char *str);
-t_ls	*store_type_name(char *path);
+void	flagThings(char *str);
+int		isFlag(char *str);
+t_ls	*storeTypeName(char *path);
 t_ls	*no_options(char *path);
-void	sort_a(t_ls *tmp);
-void	print_a(t_ls *list);
-void	print_base(t_ls *list);
-void	sort_r(t_ls *tmp);
-t_ls	*store_recursive(char *path);
+void	sortAscii(t_ls *tmp);
+void	printAll(t_ls *list);
+void	printBase(t_ls *list);
+void	sortRevAscii(t_ls *tmp);
+// t_ls	*store_recursive(char *path);
 
 #endif

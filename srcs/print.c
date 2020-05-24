@@ -12,7 +12,7 @@
 
 #include "../includes/ft_ls.h"
 
-void	print_a(t_ls *list)
+void	printAll(t_ls *list)
 {
 	while (list->fw != NULL)
 	{
@@ -21,7 +21,7 @@ void	print_a(t_ls *list)
 	}
 	return ;
 }
-void	print_base(t_ls *list)
+void	printBase(t_ls *list)
 {
 	while (list->fw != NULL)
 	{
