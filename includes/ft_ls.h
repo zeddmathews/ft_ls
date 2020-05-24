@@ -16,6 +16,7 @@
 # include <dirent.h>
 # include <linux/types.h>
 # include <linux/stat.h>
+# include <errno.h>
 // # include <sys/types.h>
 // # include <sys/stat.h>
 # include <fcntl.h>
@@ -44,7 +45,6 @@ typedef struct 			set_flag
 	int					dash_R;
 	int					dir_num;
 }						is_set;
-
 
 void	flagThings(char *str);
 int		isFlag(char *str);
