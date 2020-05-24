@@ -3,7 +3,7 @@
 int		main(int ac, char **av)
 {
 	(void)ac;
-	if (validFlags(av[1]))
+	if (validFlags(av[1]) == 1)
 	{
 		ft_putendl("welp");
 	}

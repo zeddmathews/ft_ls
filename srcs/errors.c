@@ -55,7 +55,7 @@ int		validFlags(char *flagString)
 	int i;
 
 	i = 0;
-	if (multipleDashes(flagString))
+	if (!multipleDashes(flagString))
 		exit(1);
 	while (flagString[i])
 	{
