@@ -35,9 +35,18 @@ int		multipleDashes(char *flagString)
 		}
 		i++;
 	}
-	ft_putstr("ls: unrecognized option '");
-	ft_putstr(tmp);
-	ft_putendl("'");
+	i = 1;
+	while (flagString[i])
+	{
+		if (!ft_strchr("larRt", flagString[i]) && flagString[0] == '-')
+		{
+			ft_putstr("ls: unrecognized option '");
+			ft_putchar(flagString[i]);
+			ft_putendl("'");
+			exit(1);
+		}
+		i++;
+	}
 	return (1);
 }
 
