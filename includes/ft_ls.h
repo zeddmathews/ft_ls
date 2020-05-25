@@ -14,11 +14,11 @@
 # define FT_LS_H
 
 # include <dirent.h>
-# include <linux/types.h>
-# include <linux/stat.h>
+// # include <linux/types.h>
+// # include <linux/stat.h>
 # include <errno.h>
-// # include <sys/types.h>
-// # include <sys/stat.h>
+# include <sys/types.h>
+# include <sys/stat.h>
 # include <fcntl.h>
 # include <stdlib.h>
 # include <stdio.h>
@@ -39,14 +39,19 @@ typedef struct			user_data
 typedef struct 			set_flag
 {
 	int					dash_a;
+	int					priority_a;
 	int					dash_r;
+	int					priority_r;
 	int					dash_t;
+	int					priority_t;
 	int					dash_l;
+	int					priority_l;
 	int					dash_R;
+	int					priority_R;
 	int					dir_num;
 }						is_set;
 
-void	flagThings(char *str);
+// void	flagThings(char *str);
 int		isFlag(char *str);
 t_ls	*storeTypeName(char *path);
 t_ls	*no_options(char *path);
@@ -56,6 +61,7 @@ void	printBase(t_ls *list);
 void	sortRevAscii(t_ls *tmp);
 int		validFlags(char *flagString);
 int		multipleDashes(char *flagString);
+int		flagCheck(char *flagString, is_set *flags);
 // t_ls	*store_recursive(char *path);
 
 #endif

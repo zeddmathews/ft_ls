@@ -5,6 +5,7 @@ void	sortAscii(t_ls *tmp)
 	t_ls		*head;
 	char		*str;
 
+	head = (t_ls *)malloc(sizeof(t_ls));
 	head = tmp;
 	while (tmp->fw != NULL)
 	{
@@ -24,13 +25,14 @@ void	sortAscii(t_ls *tmp)
 	tmp = head;
 }
 
-void	sortRevAscii(t_ls *tmp) //am broken
+void	sortRevAscii(t_ls *tmp)
 {
 	t_ls		*head;
 	char		*str;
 
+	head = (t_ls *)malloc(sizeof(t_ls));
 	head = tmp;
-	while (tmp->fw != NULL)
+	while (tmp->fw->fileName != NULL)
 	{
 		if (tmp->fileName == NULL)
 			tmp = tmp->fw;
@@ -47,3 +49,9 @@ void	sortRevAscii(t_ls *tmp) //am broken
 	tmp->fw = NULL;
 	tmp = head;
 }
+
+// void	sortTime(t_ls *tmp)
+// {
+// 	t_ls	*head;
+// 	char	*str;
+// }
