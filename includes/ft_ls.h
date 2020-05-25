@@ -23,7 +23,12 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <string.h>
+# include <pwd.h>
+# include <uuid/uuid.h>
+# include <grp.h>
 # include "../libft/includes/libft.h"
+
+// readlink, getgrgid, getpwuid, maybe ctime
 
 typedef struct			s_ls
 {
