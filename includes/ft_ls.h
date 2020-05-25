@@ -59,6 +59,8 @@ void	sortAscii(t_ls *tmp);
 void	printAll(t_ls *list);
 void	printBase(t_ls *list);
 void	sortRevAscii(t_ls *tmp);
+void	sortTime(t_ls *tmp);
+int		timeCompare(char *s1, char *s2);
 int		validFlags(char *flagString);
 int		multipleDashes(char *flagString);
 int		flagCheck(char *flagString, is_set *flags);

@@ -18,9 +18,6 @@ int		main(int ac, char **av)
 	else if (ac > 1)
 	{
 				flag = flagCheck(av[1], flags);
-				// ft_putnbr(flag);
-				// ft_putnbr(flags->dash_a);
-				// ft_putchar();
 				if (flags->dash_a)
 				{
 					store = storeTypeName(".");
@@ -33,8 +30,12 @@ int		main(int ac, char **av)
 					sortRevAscii(store);
 					printBase(store);
 				}
-				// ft_putchar('\n');
-				// ft_putendl("welp");
+				else if (flags->dash_t)
+				{
+					store = storeTypeName(".");
+					sortTime(store);
+					printBase(store);
+				}
 	}
 	return (0);
 }
