@@ -26,6 +26,7 @@
 # include <pwd.h>
 # include <uuid/uuid.h>
 # include <grp.h>
+# include <time.h>
 # include "../libft/includes/libft.h"
 
 // readlink, getgrgid, getpwuid, maybe ctime
@@ -33,13 +34,14 @@
 typedef struct			s_ls
 {
 	char				*fileName;
+	int					block;
 	struct s_ls			*fw;
 }						t_ls;
 
-typedef struct			user_data
-{
-	struct user_data	*fw;
-}						l_flag;
+// typedef struct			user_data
+// {
+// 	struct user_data	*fw;
+// }						l_flag;
 
 typedef struct 			set_flag
 {
@@ -69,6 +71,13 @@ int		timeCompare(char *s1, char *s2);
 int		validFlags(char *flagString);
 int		multipleDashes(char *flagString);
 int		flagCheck(char *flagString, is_set *flags);
+void	printNString(char *str, int len);
+void	printPermissions(struct stat permissions);
+void	printIDData(struct stat idData);
+void	printTime(struct stat timeData);
+void	userData(char *path);
+void	printEverything(t_ls *store);
+void	printBlocks(t_ls *store);
 // t_ls	*store_recursive(char *path);
 
 #endif

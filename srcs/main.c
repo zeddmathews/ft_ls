@@ -36,6 +36,12 @@ int		main(int ac, char **av)
 					sortTime(store);
 					printBase(store);
 				}
+				else if (flags->dash_l)
+				{
+					store = storeTypeName(".");
+					sortAscii(store);
+					printEverything(store);
+				}
 	}
 	return (0);
 }

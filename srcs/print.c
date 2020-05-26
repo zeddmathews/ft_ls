@@ -22,3 +22,15 @@ void	printBase(t_ls *list)
 		list = list->fw;
 	}
 }
+
+void	printNString(char *str, int len)
+{
+	int i;
+
+	i = 0;
+	while (i < len)
+	{
+		ft_putchar(str[i]);
+		i++;
+	}
+}
