@@ -78,6 +78,7 @@ void	printTime(struct stat timeData);
 void	userData(char *path);
 void	printEverything(t_ls *store);
 void	printBlocks(t_ls *store);
+void	dash_R(char *path, int indent);
 // t_ls	*store_recursive(char *path);
 
 #endif

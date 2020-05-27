@@ -73,5 +73,7 @@ char	**ft_strsplit(char const *s, char c);
 char	*ft_itoa(int num);
 int		ft_numlen(long num);
 int		ft_wc(char const *s, char c);
+char	*ft_strjoinmult(char *s1, char *s2, char *s3);
+void	ft_putindent(int indent);
 
 #endif

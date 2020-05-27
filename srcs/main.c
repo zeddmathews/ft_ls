@@ -42,6 +42,12 @@ int		main(int ac, char **av)
 					sortAscii(store);
 					printEverything(store);
 				}
+				else if (flags->dash_R)
+				{
+					// store = storeTypeName(".");
+					// sortAscii(store);
+					dash_R(".", 0);
+				}
 	}
 	return (0);
 }
