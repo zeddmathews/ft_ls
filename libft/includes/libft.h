@@ -75,5 +75,6 @@ int		ft_numlen(long num);
 int		ft_wc(char const *s, char c);
 char	*ft_strjoinmult(char *s1, char *s2, char *s3);
 void	ft_putindent(int indent);
+int		wordMatch(char *s1, char *s2);
 
 #endif

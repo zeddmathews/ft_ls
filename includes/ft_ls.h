@@ -56,11 +56,13 @@ typedef struct 			set_flag
 	int					dash_R;
 	int					priority_R;
 	int					dir_num;
+	int					foundFlag;
+	int					foundOther;
 }						is_set;
 
 // void	flagThings(char *str);
 int		isFlag(char *str);
-t_ls	*storeTypeName(char *path);
+t_ls	*dataTypeName(char *path);
 t_ls	*no_options(char *path);
 void	sortAscii(t_ls *tmp);
 void	printAll(t_ls *list);
@@ -70,7 +72,8 @@ void	sortTime(t_ls *tmp);
 int		timeCompare(char *s1, char *s2);
 int		validFlags(char *flagString);
 int		multipleDashes(char *flagString);
-int		flagCheck(char *flagString, is_set *flags);
+// int		flagCheck(char *flagString, is_set *flags);
+int		flagCheck(int ac, char **av, is_set *flags);
 void	printNString(char *str, int len);
 void	printPermissions(struct stat permissions);
 void	printIDData(struct stat idData);
@@ -79,6 +82,13 @@ void	userData(char *path);
 void	printEverything(t_ls *store);
 void	printBlocks(t_ls *store);
 void	dash_R(char *path, int indent);
+void	invalidFOrD(char *flagString);
+int		findDash(char *flagString, is_set *flags);
+void	checkExists(char *flagString, t_ls *data);
+int		argCheck(int ac, char **av, is_set *flags, t_ls *data);
+int		doubleDash(int ac, char *flagString);
+void	setPriority(is_set *flags);
+void	illegalOption(char *flagString);
 // t_ls	*store_recursive(char *path);
 
 #endif

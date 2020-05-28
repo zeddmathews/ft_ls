@@ -69,6 +69,7 @@ SRC = ft_memset.c \
 	  ft_wc.c \
 	  ft_strjoinmult.c \
 	  ft_putindent.c \
+	  wordMatch.c \
 
 INC = libft.h
 
@@ -129,6 +130,7 @@ _O = ft_memset.o \
 	  ft_wc.o \
 	  ft_strjoinmult.o \
 	  ft_putindent.o \
+	  wordMatch.o \
 
 all: $(NAME)
 

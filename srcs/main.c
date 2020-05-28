@@ -2,52 +2,60 @@
 
 int		main(int ac, char **av)
 {
-	t_ls *store;
+	t_ls *data;
 	is_set *flags;
-	int flag;
+	// int flag;
 
-	store = NULL;
+	data = NULL;
 	flags = (is_set *)malloc(sizeof(is_set));
-	flag = 0;
+	// flag = 0;
 	if (ac == 1)
 	{
-		store = storeTypeName(".");
-		sortAscii(store);
-		printBase(store);
+		data = dataTypeName(".");
+		sortAscii(data);
+		printBase(data);
 	}
 	else if (ac > 1)
 	{
-				flag = flagCheck(av[1], flags);
-				if (flags->dash_a)
+		if(argCheck(ac, av, flags, data) == 3)
+		{
+			data = dataTypeName(".");
+			sortAscii(data);
+			printBase(data);
+		}
+		// else if(argCheck(ac, av, flags, data) == 2)
+		// {
+		// 	data = dataTypeName(".");
+		// 	sortAscii(data);
+		// 	printBase(data);
+		// }
+				// flag = flagCheck(av[1], flags);
+				else if (flags->dash_a)
 				{
-					store = storeTypeName(".");
-					sortAscii(store);
-					printAll(store);
+					data = dataTypeName(".");
+					sortAscii(data);
+					printAll(data);
 				}
 				else if (flags->dash_r)
 				{
-					store = storeTypeName(".");
-					sortRevAscii(store);
-					printBase(store);
+					data = dataTypeName(".");
+					sortRevAscii(data);
+					printBase(data);
 				}
 				else if (flags->dash_t)
 				{
-					store = storeTypeName(".");
-					sortTime(store);
-					printBase(store);
+					data = dataTypeName(".");
+					sortTime(data);
+					printBase(data);
 				}
 				else if (flags->dash_l)
 				{
-					store = storeTypeName(".");
-					sortAscii(store);
-					printEverything(store);
+					data = dataTypeName(".");
+					sortAscii(data);
+					printEverything(data);
 				}
 				else if (flags->dash_R)
-				{
-					// store = storeTypeName(".");
-					// sortAscii(store);
 					dash_R(".", 0);
-				}
 	}
 	return (0);
 }
