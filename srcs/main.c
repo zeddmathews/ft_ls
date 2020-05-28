@@ -2,7 +2,7 @@
 
 int		main(int ac, char **av)
 {
-	t_ls *store;
+	t_ls *data;
 	is_set *flags;
 	int flag;
 
@@ -10,44 +10,20 @@ int		main(int ac, char **av)
 	flags = (is_set *)malloc(sizeof(is_set));
 	flag = 0;
 	if (ac == 1)
-	{
-		store = storeTypeName(".");
-		sortAscii(store);
-		printBase(store);
-	}
+		printBasic(data);
 	else if (ac > 1)
 	{
 				flag = flagCheck(av[1], flags);
 				if (flags->dash_a)
-				{
-					store = storeTypeName(".");
-					sortAscii(store);
-					printAll(store);
-				}
+					printDasha(data);
 				else if (flags->dash_r)
-				{
-					store = storeTypeName(".");
-					sortRevAscii(store);
-					printBase(store);
-				}
+					printDashr(data);
 				else if (flags->dash_t)
-				{
-					store = storeTypeName(".");
-					sortTime(store);
-					printBase(store);
-				}
+					printDasht(data);
 				else if (flags->dash_l)
-				{
-					store = storeTypeName(".");
-					sortAscii(store);
-					printEverything(store);
-				}
+					printDashl(data);
 				else if (flags->dash_R)
-				{
-					// store = storeTypeName(".");
-					// sortAscii(store);
 					dash_R(".", 0);
-				}
 	}
 	return (0);
 }

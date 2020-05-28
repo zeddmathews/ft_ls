@@ -58,3 +58,38 @@ void	dash_R(char *str, int indent)
 	}
 	closedir(dir);
 }
+
+void	printDasha(t_ls *data)
+{
+	data = storeTypeName(".");
+	sortAscii(data);
+	printAll(data);
+}
+
+void	printDashr(t_ls *data)
+{
+	store = storeTypeName(".");
+	sortRevAscii(store);
+	printBase(store);
+}
+
+void	printDasht(t_ls *data)
+{
+	store = storeTypeName(".");
+	sortTime(store);
+	printBase(store);
+}
+
+void	printDashl(t_ls *data)
+{
+	store = storeTypeName(".");
+	sortAscii(store);
+	printEverything(store);
+}
+
+void	printBasic(t_ls *data)
+{
+	data = storeTypeName(".");
+	sortAscii(data);
+	printBase(data);
+}
