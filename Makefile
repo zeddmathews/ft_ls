@@ -25,7 +25,7 @@ SRCS = parsing.c \
 	  dash_l.c \
 	  more_dash_l.c \
 
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall  -Wextra
 
 INC = -I ./includes/ft_ls.h -I $(LIBFT_PATH)libft.h
 

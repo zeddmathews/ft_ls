@@ -38,6 +38,11 @@ typedef struct			s_ls
 	struct s_ls			*fw;
 }						t_ls;
 
+// typedef struct			user_data
+// {
+// 	struct user_data	*fw;
+// }						l_flag;
+
 typedef struct 			set_flag
 {
 	int					dash_a;
@@ -50,9 +55,9 @@ typedef struct 			set_flag
 	int					priority_l;
 	int					dash_R;
 	int					priority_R;
-	int					dir_num;
 	int					foundFlag;
 	int					foundOther;
+	int					dir_num;
 }						is_set;
 
 // void	flagThings(char *str);

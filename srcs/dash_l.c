@@ -77,5 +77,5 @@ void	printEverything(t_ls *store)
 		store = store->fw;
 	}
 	store->fw = NULL;
-	listDel(store);
+//	listDel(store);
 }

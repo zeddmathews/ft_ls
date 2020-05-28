@@ -9,8 +9,11 @@ void	printAll(t_ls *list)
 	}
 	return ;
 }
-void	printBase(t_ls *list)
+void	printBase(t_ls *a)
 {
+    t_ls *list;
+
+    list = a;
 	while (list->fw != NULL)
 	{
 		if (list->fileName[0] == '.')
@@ -40,6 +43,7 @@ void	dash_R(char *str, int indent)
 	DIR *dir;
 	struct dirent *store;
 	char *path;
+	char *tmp;
 
 	if (!(dir = opendir(str)))
 		return;
@@ -49,8 +53,11 @@ void	dash_R(char *str, int indent)
 				continue;
 			path = ft_strjoinmult(str, store->d_name, "/");
 			ft_putindent(indent);
-			ft_putendl(ft_strjoin("./",store->d_name));
+			tmp = ft_strjoin("./", store->d_name);
+			ft_putendl(tmp);
+			free(tmp);
 			dash_R(path, indent + 2);
+			free(path);
 		} else {
 		ft_putindent(indent);
 		ft_putendl(store->d_name);
@@ -60,7 +67,7 @@ void	dash_R(char *str, int indent)
 }
 void	printDasha(t_ls *data)
 {
-	data = dataTypeName(".");
+	data = dataTypeName("."); 
 	sortAscii(data);
 	printAll(data);
 	listDel(data);
@@ -69,6 +76,7 @@ void	printDasha(t_ls *data)
 void	printDashr(t_ls *data)
 {
 	data = dataTypeName(".");
+
 	sortRevList(data);
 	printBase(data);
 	listDel(data);
@@ -97,14 +105,28 @@ void	printBasic(t_ls *data)
 	printBase(data);
 	listDel(data);
 }
+
+
+void	listDel(t_ls *data)
+{
+	t_ls *trav;
+
+	while (data)
+	{
+		trav = data;
+		data = data->fw;
+		free(trav);
+}
+}
+
+/*
 void	listDel(t_ls *data)
 {
 	t_ls *current;
 	t_ls *fw;
-
 	current = data;
 	while (current->fw != NULL)
 		current = current->fw;
 	fw = current->fw;
 	free(fw);
-}
+}*/
