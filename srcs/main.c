@@ -56,5 +56,6 @@ int		main(int ac, char **av)
 		}
 		
 	}
+	// system("leaks ft_ls");
 	return (0);
 }

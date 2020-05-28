@@ -46,9 +46,9 @@ int		findDash(char *flagString, is_set *flags)
 void	checkExists(char *flagString, t_ls *data, is_set *flags)
 {
 	t_ls *head;
+	struct stat permissions;
 
 	head = data;
-	struct stat permissions;
 	while (data->fw)
 	{
 		if (wordMatch(flagString, data->fileName) == 0)
@@ -56,20 +56,13 @@ void	checkExists(char *flagString, t_ls *data, is_set *flags)
 			lstat(flagString, &permissions);
 			if (S_ISDIR(permissions.st_mode))
 			{
-				ft_putendl(flagString);
-				data = dataTypeName(flagString);
-				sortAscii(data);
-				printBase(data);
+				checkExists1(flagString, data);
 				return ;
 			}
 			if (flags->dash_l)
 			{
-				while (wordMatch(data->fileName, flagString) != 0)
-					data = data->fw;
-				userData(data->fileName);
-				ft_putchar(' ');
-				ft_putstr(data->fileName);
-				ft_putchar('\n');
+				checkExists2(flagString, data);
+				return ;
 			}
 			else
 				ft_putendl(flagString);
@@ -77,12 +70,31 @@ void	checkExists(char *flagString, t_ls *data, is_set *flags)
 		}
 		data = data->fw;
 	}
-	invalidFOrD(flagString);
-	data = head;
-	listDel(data);
-	listDel(head);
+	// invalidFOrD(flagString);
+	// data = head;
+	// listDel(data);
+	// listDel(head);
 }
 
+void	checkExists1(char *flagString, t_ls *data)
+{
+	
+	ft_putendl(flagString);
+	data = dataTypeName(flagString);
+	sortAscii(data);
+	printBase(data);
+		
+}
+
+void	checkExists2(char *flagString, t_ls *data)
+{
+	while (wordMatch(data->fileName, flagString) != 0)
+		data = data->fw;
+	userData(data->fileName);
+	ft_putchar(' ');
+	ft_putstr(data->fileName);
+	ft_putchar('\n');
+}
 // void	setPriority(is_set *flags)
 // {
 // 	if (flags->dash_a == 1)
