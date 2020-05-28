@@ -2,23 +2,18 @@
 
 void	printBlocks(t_ls *store)
 {
-	t_ls *tmp;
-	int i;
-
-	tmp = store;
-	i = 0;
-	ft_putstr("total ");
-	while (tmp->fw)
+	t_ls *data = store;
+	int num;
+	struct stat blocks;
+	num = 0;
+	while(data->fw != NULL)
 	{
-		if (tmp->fileName[0] == '.')
-		{
-			tmp = tmp->fw;
-			continue ;
-		}
-		else
-			i += tmp->block;
-		tmp = tmp->fw;
+		if(stat(data->fileName,&blocks) < 0)
+			return ;
+		num += blocks.st_blocks;
+		data = data->fw;
 	}
-	ft_putnbr(i);
-	ft_putstr("\n");
+	ft_putstr("total ");
+	ft_putnbr(num);
+	ft_putchar('\n');
 }

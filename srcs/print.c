@@ -82,10 +82,10 @@ void	printDashr(t_ls *data)
 	listDel(data);
 }
 
-void	printDasht(t_ls *data)
+void	printDasht(t_ls *data, is_set *flags)
 {
 	data = dataTypeName(".");
-	sortTime(data);
+	sortTime(data, flags);
 	printBase(data);
 	listDel(data);
 }
@@ -106,27 +106,34 @@ void	printBasic(t_ls *data)
 	listDel(data);
 }
 
-
-void	listDel(t_ls *data)
+void	multipleFlags(t_ls *data, is_set *flags)
 {
-	t_ls *trav;
-
-	while (data)
+	if (flags->dash_a)
 	{
-		trav = data;
-		data = data->fw;
-		free(trav);
+		data = dataTypeName(".");
+		sortAscii(data);
+		if (flags->dash_r)
+			sortRevList(data);
+		if (flags->dash_t)
+			sortTime(data, flags);
+		if (flags->dash_l)
+			printEverything(data, flags);
+		else if (!flags->dash_l)
+			printAll(data);
+	}
+	else if (!flags->dash_a)
+	{
+		data = dataTypeName(".");
+		sortAscii(data);
+		if (flags->dash_r)
+			sortRevList(data);
+		if (flags->dash_t)
+			sortTime(data, flags);
+		if (flags->dash_l)
+			printEverything(data, flags);
+		else if (!flags->dash_l)
+			printBase(data);
+	}
+	else if (flags->dash_R)
+		dash_R(".", 0);
 }
-}
-
-/*
-void	listDel(t_ls *data)
-{
-	t_ls *current;
-	t_ls *fw;
-	current = data;
-	while (current->fw != NULL)
-		current = current->fw;
-	fw = current->fw;
-	free(fw);
-}*/

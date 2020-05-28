@@ -40,22 +40,22 @@ void	sortAscii(t_ls *tmp)
 
 void	sortRevList(t_ls *tmp)
 {
-	// t_ls		*current;
-	// t_ls		*previous;
-	// t_ls		*next;
+	// t_ls	*former;
+	// t_ls 	*current;
+	// t_ls	*latter;
 
-	// current = tmp;
-	// previous = NULL;
-	// next = NULL;
-
+	// latter = NULL;
+	// former = NULL;
+	// current = *tmp;
 	// while (current != NULL)
 	// {
-	// 	next = current->fw;
-	// 	current->fw = previous;
-	// 	previous = current;
-	// 	current = next;
+	// 	latter = current->fw;
+	// 	current->fw = former;
+	// 	former = current;
+	// 	current = latter;
 	// }
-	// tmp = previous;
+	// *tmp = former;
+	// (*tmp) = (*tmp)->fw;
 	t_ls		*head;
 	char		*str;
 
@@ -90,7 +90,7 @@ int		timeCompare(char *s1, char *s2)
 	return (time1.st_ctime < time2.st_ctime);
 }
 
-void	sortTime(t_ls *tmp)
+void	sortTime(t_ls *tmp, is_set *flags)
 {
 	t_ls	*head;
 	char	*str;
@@ -99,15 +99,30 @@ void	sortTime(t_ls *tmp)
 	head = tmp;
 	while (tmp->fw != NULL)
 	{
-		if (timeCompare(tmp->fileName, tmp->fw->fileName))
+		if (flags->dash_r)
 		{
-			str = tmp->fileName;
-			tmp->fileName = tmp->fw->fileName;
-			tmp->fw->fileName = str;
-			tmp = head;
+			if (timeCompare(tmp->fw->fileName, tmp->fileName))
+			{
+				str = tmp->fw->fileName;
+				tmp->fw->fileName = tmp->fileName;
+				tmp->fileName = str;
+				tmp = head;
+			}
+			else
+				tmp = tmp->fw;
 		}
 		else
-			tmp = tmp->fw;
+		{
+			if (timeCompare(tmp->fileName, tmp->fw->fileName))
+			{
+				str = tmp->fileName;
+				tmp->fileName = tmp->fw->fileName;
+				tmp->fw->fileName = str;
+				tmp = head;
+			}
+			else
+				tmp = tmp->fw;
+		}
 	}
 	tmp->fw = NULL;
 	tmp = head;

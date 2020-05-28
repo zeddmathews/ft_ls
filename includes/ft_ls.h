@@ -31,29 +31,29 @@
 
 // readlink, getgrgid, getpwuid, maybe ctime
 
-typedef struct			s_ls
+typedef struct	s_ls
 {
-	char				*fileName;
-	int					block;
-	struct s_ls			*fw;
-}						t_ls;
+	char		*fileName;
+	int			block;
+	struct s_ls	*fw;
+}				t_ls;
 
 // typedef struct			user_data
 // {
 // 	struct user_data	*fw;
 // }						l_flag;
 
-typedef struct 			set_flag
+typedef struct 	set_flag
 {
-	int					dash_a;
-	int					dash_r;
-	int					dash_t;
-	int					dash_l;
-	int					dash_R;
-	int					foundFlag;
-	int					foundOther;
-	int					dir_num;
-}						is_set;
+	int			dash_a;
+	int			dash_r;
+	int			dash_t;
+	int			dash_l;
+	int			dash_R;
+	int			foundFlag;
+	int			foundOther;
+	int			dir_num;
+}				is_set;
 
 // void	flagThings(char *str);
 int		isFlag(char *str);
@@ -63,7 +63,7 @@ void	sortAscii(t_ls *tmp);
 void	printAll(t_ls *list);
 void	printBase(t_ls *list);
 void	sortRevList(t_ls *tmp);
-void	sortTime(t_ls *tmp);
+void	sortTime(t_ls *tmp, is_set *flags);
 int		timeCompare(char *s1, char *s2);
 // int		validFlags(char *flagString);
 // int		multipleDashes(char *flagString);
@@ -85,15 +85,16 @@ void	checkExists1(char *flagString, t_ls *data);
 void	checkExists2(char *flagString, t_ls *data);
 int		argCheck(int ac, char **av, is_set *flags, t_ls *data);
 int		doubleDash(int ac, char *flagString);
-// void	setPriority(is_set *flags);
 void	illegalOption(char *flagString);
 void	printDasha(t_ls *data);
 void	printDashr(t_ls *data);
-void	printDasht(t_ls *data);
+void	printDasht(t_ls *data, is_set *flags);
 void	printDashl(t_ls *data, is_set *flags);
 void	printBasic(t_ls *data);
 void	listDel(t_ls *data);
-is_set	*create_flag_space(void);
+is_set	*setFlags(void);
+void	multipleFlags(t_ls *data, is_set *flags);
+// void	freeFlags(is_set *flags);
 // t_ls	*store_recursive(char *path);
 
 #endif

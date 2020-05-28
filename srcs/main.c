@@ -1,19 +1,5 @@
 #include "../includes/ft_ls.h"
 
-
-is_set	*create_flag_space(void)
-{
-	is_set  *flags;
-
-	flags = (is_set *)malloc(sizeof(is_set));
-	flags->dash_a = 0;
-	flags->dash_r = 0;
-	flags->dash_t = 0;
-	flags->dash_l = 0;
-	flags->dash_R = 0;
-	return (flags);
-}
-
 int		main(int ac, char **av)
 {
 	t_ls *data;
@@ -28,7 +14,7 @@ int		main(int ac, char **av)
 	else if (ac > 1)
 	{
 		data = dataTypeName(".");
-		flags = create_flag_space();
+		flags = setFlags();
 		flagCheck(ac, av, flags, data);
 		if (findDash(av[avi], flags) == 3)
 		{
@@ -42,49 +28,10 @@ int		main(int ac, char **av)
 				return (0);
 		}
 		else
-		{
-			
-			if (flags->dash_a)
-			{
-			//hiddens
-			data = dataTypeName(".");
-			sortAscii(data);
-			if (flags->dash_t)
-				sortTime(data);
-			if (flags->dash_r)
-				sortRevList(data);
-			if (flags->dash_l)
-				printEverything(data, flags);
-			else if (!flags->dash_l)
-				printAll(data);
-			}
-			else if (!flags->dash_a)
-			{
-			//no hiddens
-			data = dataTypeName(".");
-			sortAscii(data);
-			if (flags->dash_t)
-				sortTime(data);
-			if (flags->dash_r)
-				sortRevList(data);
-			if (flags->dash_l)
-				printEverything(data, flags);
-			else if (!flags->dash_l)
-				printBase(data);
-			}
-			// if (flags->dash_a)
-			// 	printDasha(data);
-			// else if (flags->dash_r)
-			// 	printDashr(data);
-			// else if (flags->dash_t)
-			// 	printDasht(data);
-			// else if (flags->dash_l == 1)
-			// 	printDashl(data, flags);
-			else if (flags->dash_R)
-				dash_R(".", 0);
-		}
-		
+			multipleFlags(data, flags);
 	}
+	listDel(data);
+	// freeFlags(flags);
 	// system("leaks ft_ls");
 	return (0);
 }

@@ -20,12 +20,16 @@ void	printIDData(struct stat idData)
 	struct group	*group;
 	struct passwd	*pwd;
 
-	pwd = getpwuid(idData.st_uid);
-	group = getgrgid(idData.st_gid);
-	ft_putstr(pwd->pw_name);
-	ft_putchar(' ');
-	ft_putstr(group->gr_name);
-	ft_putchar(' ');
+	if ((pwd = getpwuid(idData.st_uid)) != NULL)
+	{
+		ft_putstr(pwd->pw_name);
+		ft_putchar(' ');
+	}
+	if ((group = getgrgid(idData.st_gid)) != NULL)
+	{
+		ft_putstr(group->gr_name);
+		ft_putchar(' ');
+	}
 }
 
 void	printTime(struct stat timeData)
@@ -41,7 +45,8 @@ void	userData(char *path)
 {
 	struct stat buff;
 
-	lstat(path, &buff);
+	if(stat(path,&buff) < 0)
+		return ;
 	printPermissions(buff);
 	ft_putnbr(buff.st_nlink);
 	ft_putchar('\t');
@@ -80,5 +85,4 @@ void	printEverything(t_ls *store, is_set *flags)
 		store = store->fw;
 	}
 	store->fw = NULL;
-//	listDel(store);
 }

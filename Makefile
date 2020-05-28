@@ -24,6 +24,7 @@ SRCS = parsing.c \
 	  main.c \
 	  dash_l.c \
 	  more_dash_l.c \
+	  utils.c \
 
 FLAGS = -Wall  -Wextra
 
