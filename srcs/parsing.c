@@ -24,10 +24,11 @@ int		findDash(char *flagString, is_set *flags)
 	{
 		foundOther += 1;
 		flags->foundOther = 1;
+		return (3);
 	}
-	if (flagString[0] == '-')
+	else if (flagString[0] == '-')
 	{
-		if (flags->foundOther > 0)
+		if (flags->foundOther >= 1)
 		{
 			invalidFOrD(flagString);
 			return (1);
@@ -47,11 +48,26 @@ void	checkExists(char *flagString, t_ls *data)
 	t_ls *head;
 
 	head = data;
+	struct stat permissions;
 	while (data->fw)
 	{
-		wordMatch(flagString, data->fileName) == 0 ? ft_putendl(flagString) : invalidFOrD(flagString);
+		if (wordMatch(flagString, data->fileName) == 0)
+		{
+			lstat(flagString, &permissions);
+			if (S_ISDIR(permissions.st_mode))
+			{
+				ft_putendl(flagString);
+				data = dataTypeName(flagString);
+				sortAscii(data);
+				printBase(data);
+				return ;
+			}
+			ft_putendl(flagString);
+			return ;
+		}
 		data = data->fw;
 	}
+	invalidFOrD(flagString);
 	data = head;
 }
 
@@ -69,55 +85,38 @@ void	setPriority(is_set *flags)
 		flags->priority_R = 1;
 }
 
-int		flagCheck(int ac, char **av, is_set *flags)
+int		flagCheck(int ac, char **av, is_set *flags, t_ls *data)
 {
 	int avi;
 
-	avi = 0;
+	avi = 1;
 	while (avi < ac)
 	{
 		if (doubleDash(ac, av[avi]) == 2)
 			return (3);
 		if (doubleDash(ac, av[avi]) == 1)
 			return (2);
-		if (findDash(av[avi], flags) == 2)
+		// if (findDash(av[avi], flags) == 2)
+		// {
+		if (av[avi][0] == '-')
 		{
 			if (ft_strchr(av[avi], 'a'))
-			{
-				if (flags->dash_a == 1)
-					continue ;
-				else
-					flags->dash_a = 1;
-			}
+				flags->dash_a = 1;
 			if (ft_strchr(av[avi], 'r'))
-			{
-				if (flags->dash_r == 1)
-					continue ;
-				else
-					flags->dash_r = 1;
-			}
+				flags->dash_r = 1;
 			if (ft_strchr(av[avi], 't'))
-			{
-				if (flags->dash_t == 1)
-					continue ;
-				else
-					flags->dash_t = 1;
-			}
+				flags->dash_t = 1;
 			if (ft_strchr(av[avi], 'l'))
-			{
-				if (flags->dash_l == 1)
-					continue ;
-				else
-					flags->dash_l = 1;
-			}
+				flags->dash_l = 1;
 			if (ft_strchr(av[avi], 'R'))
-			{
-				if (flags->dash_R == 1)
-					continue ;
-				else
-					flags->dash_R = 1;
-			}
+				flags->dash_R = 1;
 		}
+		else if (av[avi][0] != '-')
+		{
+			checkExists(av[avi], data);
+			exit(1);
+		}
+		// }
 		avi++;
 	}
 	return (0);
@@ -129,15 +128,15 @@ int		argCheck(int ac, char **av, is_set *flags, t_ls *data)
 	int avi;
 
 	i = 0;
-	avi = 0;
-	if (flagCheck(ac, av, flags) == 3)
+	avi = 1;
+	if (flagCheck(ac, av, flags, data) == 3)
 		return(3);
-	if (flagCheck(ac, av, flags) == 2)
+	if (flagCheck(ac, av, flags, data) == 2)
 	{
 		illegalOption(av[avi]);
 		return(2);
 	}
-	while (avi < ac - 1)
+	while (avi < ac)
 	{
 		if (findDash(av[avi], flags) == 2)
 		{

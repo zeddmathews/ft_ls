@@ -38,11 +38,6 @@ typedef struct			s_ls
 	struct s_ls			*fw;
 }						t_ls;
 
-// typedef struct			user_data
-// {
-// 	struct user_data	*fw;
-// }						l_flag;
-
 typedef struct 			set_flag
 {
 	int					dash_a;
@@ -67,13 +62,13 @@ t_ls	*no_options(char *path);
 void	sortAscii(t_ls *tmp);
 void	printAll(t_ls *list);
 void	printBase(t_ls *list);
-void	sortRevAscii(t_ls *tmp);
+void	sortRevList(t_ls *tmp);
 void	sortTime(t_ls *tmp);
 int		timeCompare(char *s1, char *s2);
 int		validFlags(char *flagString);
 int		multipleDashes(char *flagString);
 // int		flagCheck(char *flagString, is_set *flags);
-int		flagCheck(int ac, char **av, is_set *flags);
+int		flagCheck(int ac, char **av, is_set *flags, t_ls *data);
 void	printNString(char *str, int len);
 void	printPermissions(struct stat permissions);
 void	printIDData(struct stat idData);
@@ -89,6 +84,12 @@ int		argCheck(int ac, char **av, is_set *flags, t_ls *data);
 int		doubleDash(int ac, char *flagString);
 void	setPriority(is_set *flags);
 void	illegalOption(char *flagString);
+void	printDasha(t_ls *data);
+void	printDashr(t_ls *data);
+void	printDasht(t_ls *data);
+void	printDashl(t_ls *data);
+void	printBasic(t_ls *data);
+void	delete_stuff(t_ls *data);
 // t_ls	*store_recursive(char *path);
 
 #endif

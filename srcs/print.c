@@ -58,3 +58,53 @@ void	dash_R(char *str, int indent)
 	}
 	closedir(dir);
 }
+void	printDasha(t_ls *data)
+{
+	data = dataTypeName(".");
+	sortAscii(data);
+	printAll(data);
+	delete_stuff(data);
+}
+
+void	printDashr(t_ls *data)
+{
+	data = dataTypeName(".");
+	sortRevList(data);
+	printBase(data);
+	delete_stuff(data);
+}
+
+void	printDasht(t_ls *data)
+{
+	data = dataTypeName(".");
+	sortTime(data);
+	printBase(data);
+	delete_stuff(data);
+}
+
+void	printDashl(t_ls *data)
+{
+	data = dataTypeName(".");
+	sortAscii(data);
+	printEverything(data);
+	delete_stuff(data);
+}
+
+void	printBasic(t_ls *data)
+{
+	data = dataTypeName(".");
+	sortAscii(data);
+	printBase(data);
+	delete_stuff(data);
+}
+void	delete_stuff(t_ls *data)
+{
+	t_ls *current;
+	t_ls *next;
+
+	current = data;
+	while (current->fw != NULL)
+		current = current->fw;
+	next = current->fw;
+	free(next);
+}

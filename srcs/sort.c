@@ -25,7 +25,7 @@ void	sortAscii(t_ls *tmp)
 	tmp = head;
 }
 
-void	sortRevAscii(t_ls *tmp)
+void	sortRevList(t_ls *tmp)
 {
 	t_ls		*head;
 	char		*str;

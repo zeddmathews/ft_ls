@@ -13,7 +13,7 @@ int		wordMatch(char *s1, char *s2)
 		return(2);
 	while (s1[i])
 	{
-		if (s1[i] != s2[1])
+		if (s1[i] != s2[i])
 			return(1);
 		i++;
 	}
