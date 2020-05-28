@@ -43,7 +43,7 @@ int		findDash(char *flagString, is_set *flags)
 	return (0);
 }
 
-void	checkExists(char *flagString, t_ls *data)
+void	checkExists(char *flagString, t_ls *data, is_set *flags)
 {
 	t_ls *head;
 
@@ -62,13 +62,25 @@ void	checkExists(char *flagString, t_ls *data)
 				printBase(data);
 				return ;
 			}
-			ft_putendl(flagString);
+			if (flags->dash_l)
+			{
+				while (wordMatch(data->fileName, flagString) != 0)
+					data = data->fw;
+				userData(data->fileName);
+				ft_putchar(' ');
+				ft_putstr(data->fileName);
+				ft_putchar('\n');
+			}
+			else
+				ft_putendl(flagString);
 			return ;
 		}
 		data = data->fw;
 	}
 	invalidFOrD(flagString);
 	data = head;
+	listDel(data);
+	listDel(head);
 }
 
 void	setPriority(is_set *flags)
@@ -113,7 +125,7 @@ int		flagCheck(int ac, char **av, is_set *flags, t_ls *data)
 		}
 		else if (av[avi][0] != '-')
 		{
-			checkExists(av[avi], data);
+			checkExists(av[avi], data, flags);
 			exit(1);
 		}
 		// }
@@ -151,7 +163,7 @@ int		argCheck(int ac, char **av, is_set *flags, t_ls *data)
 		}
 		else if(findDash(av[avi], flags) == 0)
 		{
-			checkExists(av[avi], data);
+			checkExists(av[avi], data, flags);
 			avi++;
 			continue ;
 		}

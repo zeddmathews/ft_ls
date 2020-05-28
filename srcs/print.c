@@ -63,7 +63,7 @@ void	printDasha(t_ls *data)
 	data = dataTypeName(".");
 	sortAscii(data);
 	printAll(data);
-	delete_stuff(data);
+	listDel(data);
 }
 
 void	printDashr(t_ls *data)
@@ -71,7 +71,7 @@ void	printDashr(t_ls *data)
 	data = dataTypeName(".");
 	sortRevList(data);
 	printBase(data);
-	delete_stuff(data);
+	listDel(data);
 }
 
 void	printDasht(t_ls *data)
@@ -79,7 +79,7 @@ void	printDasht(t_ls *data)
 	data = dataTypeName(".");
 	sortTime(data);
 	printBase(data);
-	delete_stuff(data);
+	listDel(data);
 }
 
 void	printDashl(t_ls *data)
@@ -87,7 +87,7 @@ void	printDashl(t_ls *data)
 	data = dataTypeName(".");
 	sortAscii(data);
 	printEverything(data);
-	delete_stuff(data);
+	listDel(data);
 }
 
 void	printBasic(t_ls *data)
@@ -95,16 +95,16 @@ void	printBasic(t_ls *data)
 	data = dataTypeName(".");
 	sortAscii(data);
 	printBase(data);
-	delete_stuff(data);
+	listDel(data);
 }
-void	delete_stuff(t_ls *data)
+void	listDel(t_ls *data)
 {
 	t_ls *current;
-	t_ls *next;
+	t_ls *fw;
 
 	current = data;
 	while (current->fw != NULL)
 		current = current->fw;
-	next = current->fw;
-	free(next);
+	fw = current->fw;
+	free(fw);
 }

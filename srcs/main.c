@@ -22,8 +22,8 @@ int		main(int ac, char **av)
 			while (avi < ac)
 			{
 				data = dataTypeName(".");
-				// ft_putendl(av[1]);
-				checkExists(av[avi], data);
+				checkExists(av[avi], data, flags);
+				listDel(data);
 				avi++;
 			}
 				return (0);
@@ -43,6 +43,7 @@ int		main(int ac, char **av)
 		}
 		
 	}
+	// sleep(60);
 	return (0);
 }
 // if(argCheck(ac, av, flags, data) == 3)

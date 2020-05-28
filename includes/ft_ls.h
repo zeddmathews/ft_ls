@@ -79,7 +79,7 @@ void	printBlocks(t_ls *store);
 void	dash_R(char *path, int indent);
 void	invalidFOrD(char *flagString);
 int		findDash(char *flagString, is_set *flags);
-void	checkExists(char *flagString, t_ls *data);
+void	checkExists(char *flagString, t_ls *data, is_set *flags);
 int		argCheck(int ac, char **av, is_set *flags, t_ls *data);
 int		doubleDash(int ac, char *flagString);
 void	setPriority(is_set *flags);
@@ -89,7 +89,7 @@ void	printDashr(t_ls *data);
 void	printDasht(t_ls *data);
 void	printDashl(t_ls *data);
 void	printBasic(t_ls *data);
-void	delete_stuff(t_ls *data);
+void	listDel(t_ls *data);
 // t_ls	*store_recursive(char *path);
 
 #endif
