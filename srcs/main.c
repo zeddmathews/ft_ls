@@ -6,10 +6,10 @@ is_set	*create_flag_space(void)
 	is_set  *flags;
 
 	flags = (is_set *)malloc(sizeof(is_set));
-	flags->dash_r = 0;
-	flags->dash_l = 0;
-	flags->dash_t = 0;
 	flags->dash_a = 0;
+	flags->dash_r = 0;
+	flags->dash_t = 0;
+	flags->dash_l = 0;
 	flags->dash_R = 0;
 	return (flags);
 }
@@ -23,14 +23,12 @@ int		main(int ac, char **av)
 
 	data = NULL;
 	flags = NULL;
-	//	flags = (is_set *)malloc(sizeof(is_set));
 	flag = 0;
 	avi = 1;
 	if (ac == 1)
 		printBasic(data);
 	else if (ac > 1)
 	{
-		// flags = (is_set *)malloc(sizeof(is_set));
 		data = dataTypeName(".");
 		flags = create_flag_space();
 		flag = flagCheck(ac, av, flags, data);
@@ -60,20 +58,5 @@ int		main(int ac, char **av)
 		}
 		
 	}
-	// sleep(60);
 	return (0);
 }
-// if(argCheck(ac, av, flags, data) == 3)
-		// {
-		// 	data = dataTypeName(".");
-		// 	sortAscii(data);
-		// 	printBase(data);
-		// }
-		// else if(argCheck(ac, av, flags, data) == 2)
-		// 	return(0);
-		// {
-		// 	data = dataTypeName(".");
-		// 	sortAscii(data);
-		// 	printBase(data);
-		// }
-				// flag = flagCheck(av[1], flags);

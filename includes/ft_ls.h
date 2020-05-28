@@ -46,15 +46,15 @@ typedef struct			s_ls
 typedef struct 			set_flag
 {
 	int					dash_a;
-	int					priority_a;
+	// int					priority_a;
 	int					dash_r;
-	int					priority_r;
+	// int					priority_r;
 	int					dash_t;
-	int					priority_t;
+	// int					priority_t;
 	int					dash_l;
-	int					priority_l;
+	// int					priority_l;
 	int					dash_R;
-	int					priority_R;
+	// int					priority_R;
 	int					foundFlag;
 	int					foundOther;
 	int					dir_num;
@@ -87,7 +87,7 @@ int		findDash(char *flagString, is_set *flags);
 void	checkExists(char *flagString, t_ls *data, is_set *flags);
 int		argCheck(int ac, char **av, is_set *flags, t_ls *data);
 int		doubleDash(int ac, char *flagString);
-void	setPriority(is_set *flags);
+// void	setPriority(is_set *flags);
 void	illegalOption(char *flagString);
 void	printDasha(t_ls *data);
 void	printDashr(t_ls *data);
@@ -95,6 +95,7 @@ void	printDasht(t_ls *data);
 void	printDashl(t_ls *data);
 void	printBasic(t_ls *data);
 void	listDel(t_ls *data);
+is_set	*create_flag_space(void);
 // t_ls	*store_recursive(char *path);
 
 #endif

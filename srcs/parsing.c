@@ -83,19 +83,19 @@ void	checkExists(char *flagString, t_ls *data, is_set *flags)
 	listDel(head);
 }
 
-void	setPriority(is_set *flags)
-{
-	if (flags->dash_a == 1)
-		flags->priority_a = 5;
-	if (flags->dash_r == 1)
-		flags->priority_r = 4;
-	if (flags->dash_t == 1)
-		flags->priority_t = 3;
-	if (flags->dash_l == 1)
-		flags->priority_l = 2;
-	if (flags->dash_R == 1)
-		flags->priority_R = 1;
-}
+// void	setPriority(is_set *flags)
+// {
+// 	if (flags->dash_a == 1)
+// 		flags->priority_a = 5;
+// 	if (flags->dash_r == 1)
+// 		flags->priority_r = 4;
+// 	if (flags->dash_t == 1)
+// 		flags->priority_t = 3;
+// 	if (flags->dash_l == 1)
+// 		flags->priority_l = 2;
+// 	if (flags->dash_R == 1)
+// 		flags->priority_R = 1;
+// }
 
 int		flagCheck(int ac, char **av, is_set *flags, t_ls *data)
 {
@@ -108,8 +108,6 @@ int		flagCheck(int ac, char **av, is_set *flags, t_ls *data)
 			return (3);
 		if (doubleDash(ac, av[avi]) == 1)
 			return (2);
-		// if (findDash(av[avi], flags) == 2)
-		// {
 		if (av[avi][0] == '-')
 		{
 			if (ft_strchr(av[avi], 'a'))
@@ -128,62 +126,45 @@ int		flagCheck(int ac, char **av, is_set *flags, t_ls *data)
 			checkExists(av[avi], data, flags);
 			exit(1);
 		}
-		// }
 		avi++;
 	}
 	return (0);
 }
 
-int		argCheck(int ac, char **av, is_set *flags, t_ls *data)
-{
-	int i;
-	int avi;
-
-	i = 0;
-	avi = 1;
-	if (flagCheck(ac, av, flags, data) == 3)
-		return(3);
-	if (flagCheck(ac, av, flags, data) == 2)
-	{
-		illegalOption(av[avi]);
-		return(2);
-	}
-	while (avi < ac)
-	{
-		if (findDash(av[avi], flags) == 2)
-		{
-			setPriority(flags);
-			avi++;
-			continue ;
-		}
-		else if(findDash(av[avi], flags) == 1)
-		{
-			avi++;
-			continue ;
-		}
-		else if(findDash(av[avi], flags) == 0)
-		{
-			checkExists(av[avi], data, flags);
-			avi++;
-			continue ;
-		}
-		avi++;
-	}
-	return (0);
-}
-
-// int		filterArguments(int ac, char **av)
+// int		argCheck(int ac, char **av, is_set *flags, t_ls *data)
 // {
 // 	int i;
 // 	int avi;
 
 // 	i = 0;
-// 	avi = ac -1;
-// 	if (ac > 1)
+// 	avi = 1;
+// 	if (flagCheck(ac, av, flags, data) == 3)
+// 		return(3);
+// 	if (flagCheck(ac, av, flags, data) == 2)
 // 	{
-// 		while (i < avi)
+// 		illegalOption(av[avi]);
+// 		return(2);
+// 	}
+// 	while (avi < ac)
+// 	{
+// 		if (findDash(av[avi], flags) == 2)
+// 		{
+// 			setPriority(flags);
+// 			avi++;
+// 			continue ;
+// 		}
+// 		else if(findDash(av[avi], flags) == 1)
 // 		{
 // 			avi++;
+// 			continue ;
 // 		}
+// 		else if(findDash(av[avi], flags) == 0)
+// 		{
+// 			checkExists(av[avi], data, flags);
+// 			avi++;
+// 			continue ;
+// 		}
+// 		avi++;
 // 	}
+// 	return (0);
 // }
