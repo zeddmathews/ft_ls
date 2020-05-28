@@ -90,11 +90,11 @@ void	printDasht(t_ls *data)
 	listDel(data);
 }
 
-void	printDashl(t_ls *data)
+void	printDashl(t_ls *data, is_set *flags)
 {
 	data = dataTypeName(".");
 	sortAscii(data);
-	printEverything(data);
+	printEverything(data, flags);
 	listDel(data);
 }
 

@@ -60,15 +60,18 @@ void	userData(char *path)
 	printTime(buff);
 }
 
-void	printEverything(t_ls *store)
+void	printEverything(t_ls *store, is_set *flags)
 {
 	printBlocks(store);
 	while(store->fw)
 	{
-		if(store->fileName[0] == '.')
+		if (!flags->dash_a)
 		{
-			store = store->fw;
-			continue ;
+			if(store->fileName[0] == '.')
+			{
+				store = store->fw;
+				continue ;
+			}
 		}
 		userData(store->fileName);
 		ft_putchar(' ');

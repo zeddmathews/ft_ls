@@ -43,14 +43,43 @@ int		main(int ac, char **av)
 		}
 		else
 		{
+			
 			if (flags->dash_a)
-				printDasha(data);
-			else if (flags->dash_r)
-				printDashr(data);
-			else if (flags->dash_t)
-				printDasht(data);
-			else if (flags->dash_l == 1)
-				printDashl(data);
+			{
+			//hiddens
+			data = dataTypeName(".");
+			sortAscii(data);
+			if (flags->dash_t)
+				sortTime(data);
+			if (flags->dash_r)
+				sortRevList(data);
+			if (flags->dash_l)
+				printEverything(data, flags);
+			else if (!flags->dash_l)
+				printAll(data);
+			}
+			else if (!flags->dash_a)
+			{
+			//no hiddens
+			data = dataTypeName(".");
+			sortAscii(data);
+			if (flags->dash_t)
+				sortTime(data);
+			if (flags->dash_r)
+				sortRevList(data);
+			if (flags->dash_l)
+				printEverything(data, flags);
+			else if (!flags->dash_l)
+				printBase(data);
+			}
+			// if (flags->dash_a)
+			// 	printDasha(data);
+			// else if (flags->dash_r)
+			// 	printDashr(data);
+			// else if (flags->dash_t)
+			// 	printDasht(data);
+			// else if (flags->dash_l == 1)
+			// 	printDashl(data, flags);
 			else if (flags->dash_R)
 				dash_R(".", 0);
 		}
