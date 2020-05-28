@@ -9,8 +9,11 @@ void	printAll(t_ls *list)
 	}
 	return ;
 }
-void	printBase(t_ls *list)
+void	printBase(t_ls *a)
 {
+    t_ls *list;
+
+    list = a;
 	while (list->fw != NULL)
 	{
 		if (list->fileName[0] == '.')
@@ -40,6 +43,7 @@ void	dash_R(char *str, int indent)
 	DIR *dir;
 	struct dirent *store;
 	char *path;
+    char *tmp;
 
 	if (!(dir = opendir(str)))
 		return;
@@ -49,8 +53,11 @@ void	dash_R(char *str, int indent)
 				continue;
 			path = ft_strjoinmult(str, store->d_name, "/");
 			ft_putindent(indent);
-			ft_putendl(ft_strjoin("./",store->d_name));
+            tmp = ft_strjoin("./", store->d_name);
+            ft_putendl(tmp);
+             free(tmp);
 			dash_R(path, indent + 2);
+            free(path);
 		} else {
 		ft_putindent(indent);
 		ft_putendl(store->d_name);
@@ -58,54 +65,69 @@ void	dash_R(char *str, int indent)
 	}
 	closedir(dir);
 }
-
 void	printDasha(t_ls *data)
 {
-	data = storeTypeName(".");
-	sortAscii(data);
+	data = dataTypeName("."); 
+    sortAscii(data);
 	printAll(data);
-	delete_stuff(data);
+	listDel(data);
 }
 
 void	printDashr(t_ls *data)
 {
-	store = storeTypeName(".");
-	sortRevAscii(store);
-	printBase(store);
-	delete_stuff(data);
+	data = dataTypeName(".");
+    
+    sortRevList(data);
+  	printBase(data);
+	listDel(data);
 }
 
 void	printDasht(t_ls *data)
 {
-	store = storeTypeName(".");
-	sortTime(store);
-	printBase(store);
-	delete_stuff(data);
+	data = dataTypeName(".");
+	sortTime(data);
+	printBase(data);
+	listDel(data);
 }
 
 void	printDashl(t_ls *data)
 {
-	store = storeTypeName(".");
-	sortAscii(store);
-	printEverything(store);
-	delete_stuff(data);
+	data = dataTypeName(".");
+	sortAscii(data);
+	printEverything(data);
+	listDel(data);
 }
 
 void	printBasic(t_ls *data)
 {
-	data = storeTypeName(".");
+	data = dataTypeName(".");
 	sortAscii(data);
 	printBase(data);
-	delete_stuff(data);
+    listDel(data);
 }
-void	delete_stuff(t_ls *store)
+
+
+void    listDel(t_ls *data)
+{
+    t_ls    *trav;
+
+    while (data)
+    {
+        trav = data;
+        data = data->fw;
+        free(trav);
+    }
+}
+
+/*
+void	listDel(t_ls *data)
 {
 	t_ls *current;
-	t_ls *next;
+	t_ls *fw;
 
-	current = store;
-	while (current->next != NULL)
-		current = current->next;
-	next = current->next;
-	free(next);
-}
+	current = data;
+	while (current->fw != NULL)
+		current = current->fw;
+	fw = current->fw;
+	free(fw);
+}*/
