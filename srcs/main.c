@@ -18,12 +18,10 @@ int		main(int ac, char **av)
 {
 	t_ls *data;
 	is_set *flags;
-	int flag;
 	int avi;
 
 	data = NULL;
 	flags = NULL;
-	flag = 0;
 	avi = 1;
 	if (ac == 1)
 		printBasic(data);
@@ -31,7 +29,7 @@ int		main(int ac, char **av)
 	{
 		data = dataTypeName(".");
 		flags = create_flag_space();
-		flag = flagCheck(ac, av, flags, data);
+		flagCheck(ac, av, flags, data);
 		if (findDash(av[avi], flags) == 3)
 		{
 			while (avi < ac)

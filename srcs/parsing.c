@@ -5,9 +5,9 @@ int		doubleDash(int ac, char *flagString)
 	int len;
 
 	len = ft_strlen(flagString);
-	if (ac == 2 && flagString[0] == '-' && flagString[1] == '-' && len > 2)
+	if (ac >= 2 && flagString[0] == '-' && flagString[1] == '-' && len > 2)
 		return (1);
-	else if (ac == 2 && flagString[0] == '-' && flagString[1] == '-' && len == 2)
+	else if (ac >= 2 && flagString[0] == '-' && flagString[1] == '-' && len == 2)
 		return (2);
 	else
 		return(0);
@@ -97,7 +97,7 @@ void	checkExists(char *flagString, t_ls *data, is_set *flags)
 // 		flags->priority_R = 1;
 // }
 
-int		flagCheck(int ac, char **av, is_set *flags, t_ls *data)
+void	flagCheck(int ac, char **av, is_set *flags, t_ls *data)
 {
 	int avi;
 
@@ -105,10 +105,23 @@ int		flagCheck(int ac, char **av, is_set *flags, t_ls *data)
 	while (avi < ac)
 	{
 		if (doubleDash(ac, av[avi]) == 2)
-			return (3);
+		{
+			printBasic(data);
+			exit (1);
+		}
 		if (doubleDash(ac, av[avi]) == 1)
-			return (2);
-		if (av[avi][0] == '-')
+		{
+			illegalOption(av[avi]);
+			exit (1);
+		}
+		flagCheck1(av, avi, flags, data);
+		avi++;
+	}
+}
+
+void	flagCheck1(char **av, int avi, is_set *flags, t_ls *data)
+{
+	if (av[avi][0] == '-')
 		{
 			if (ft_strchr(av[avi], 'a'))
 				flags->dash_a = 1;
@@ -126,9 +139,6 @@ int		flagCheck(int ac, char **av, is_set *flags, t_ls *data)
 			checkExists(av[avi], data, flags);
 			exit(1);
 		}
-		avi++;
-	}
-	return (0);
 }
 
 // int		argCheck(int ac, char **av, is_set *flags, t_ls *data)

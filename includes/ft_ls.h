@@ -46,15 +46,10 @@ typedef struct			s_ls
 typedef struct 			set_flag
 {
 	int					dash_a;
-	// int					priority_a;
 	int					dash_r;
-	// int					priority_r;
 	int					dash_t;
-	// int					priority_t;
 	int					dash_l;
-	// int					priority_l;
 	int					dash_R;
-	// int					priority_R;
 	int					foundFlag;
 	int					foundOther;
 	int					dir_num;
@@ -73,7 +68,8 @@ int		timeCompare(char *s1, char *s2);
 int		validFlags(char *flagString);
 int		multipleDashes(char *flagString);
 // int		flagCheck(char *flagString, is_set *flags);
-int		flagCheck(int ac, char **av, is_set *flags, t_ls *data);
+void	flagCheck(int ac, char **av, is_set *flags, t_ls *data);
+void	flagCheck1(char **av, int avi, is_set *flags, t_ls *data);
 void	printNString(char *str, int len);
 void	printPermissions(struct stat permissions);
 void	printIDData(struct stat idData);
