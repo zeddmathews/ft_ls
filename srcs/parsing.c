@@ -26,20 +26,6 @@ int		findDash(char *flagString, is_set *flags)
 		flags->foundOther = 1;
 		return (3);
 	}
-	else if (flagString[0] == '-')
-	{
-		if (flags->foundOther >= 1)
-		{
-			invalidFOrD(flagString);
-			return (1);
-		}
-		else
-		{
-			foundFlags += 1;
-			flags->foundFlag = foundFlags;
-			return (2);
-		}
-	}
 	return (0);
 }
 

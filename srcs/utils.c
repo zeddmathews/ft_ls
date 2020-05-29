@@ -29,16 +29,6 @@ void	initMain(int ac, char **av, int avi, t_ls *data, is_set *flags)
 		avi++;
 	}
 }
-// void	freeFlags(is_set *flags)
-// {
-// 	is_set *traverse;
-
-// 	while (flags)
-// 	{
-// 		traverse = data;
-// 	}
-// 	free(flags);
-// }
 
 void	listDel(t_ls *data)
 {

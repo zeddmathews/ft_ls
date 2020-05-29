@@ -1,19 +1,5 @@
 #include "../includes/ft_ls.h"
 
-
-// void	print_list(t_ls *tmp)
-// {
-// 	t_ls *value;
-
-// 	value = tmp;
-// 	while (value)
-// 	{
-// 		printf("%s ", tmp->fileName);
-// 		value = value->fw;
-// 	}
-// 	printf("\n");
-// }
-
 void	sortAscii(t_ls *tmp)
 {
 	t_ls		*head;
@@ -40,22 +26,6 @@ void	sortAscii(t_ls *tmp)
 
 void	sortRevList(t_ls *tmp)
 {
-	// t_ls	*former;
-	// t_ls 	*current;
-	// t_ls	*latter;
-
-	// latter = NULL;
-	// former = NULL;
-	// current = *tmp;
-	// while (current != NULL)
-	// {
-	// 	latter = current->fw;
-	// 	current->fw = former;
-	// 	former = current;
-	// 	current = latter;
-	// }
-	// *tmp = former;
-	// (*tmp) = (*tmp)->fw;
 	t_ls		*head;
 	char		*str;
 
@@ -74,7 +44,6 @@ void	sortRevList(t_ls *tmp)
 		else
 			tmp = tmp->fw;
 	}
-//	tmp->fw = NULL;
 	tmp = head;
 }
 
@@ -95,7 +64,6 @@ void	sortTime(t_ls *tmp, is_set *flags)
 	t_ls	*head;
 	char	*str;
 
-//	head = (t_ls *)malloc(sizeof(t_ls));
 	head = tmp;
 	while (tmp->fw != NULL)
 	{

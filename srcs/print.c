@@ -47,8 +47,10 @@ void	dash_R(char *str, int indent)
 
 	if (!(dir = opendir(str)))
 		return;
-	while ((store = readdir(dir)) != NULL) {
-		if (store->d_type == DT_DIR) {
+	while ((store = readdir(dir)) != NULL)
+	{
+		if (store->d_type == DT_DIR)
+		{
 			if (store->d_name[0] == '.')
 				continue;
 			path = ft_strjoinmult(str, store->d_name, "/");
@@ -58,44 +60,14 @@ void	dash_R(char *str, int indent)
 			free(tmp);
 			dash_R(path, indent + 2);
 			free(path);
-		} else {
-		ft_putindent(indent);
-		ft_putendl(store->d_name);
+		}
+		else
+		{
+			ft_putindent(indent);
+			ft_putendl(store->d_name);
 		}
 	}
 	closedir(dir);
-}
-void	printDasha(t_ls *data)
-{
-	data = dataTypeName("."); 
-	sortAscii(data);
-	printAll(data);
-	listDel(data);
-}
-
-void	printDashr(t_ls *data)
-{
-	data = dataTypeName(".");
-
-	sortRevList(data);
-	printBase(data);
-	listDel(data);
-}
-
-void	printDasht(t_ls *data, is_set *flags)
-{
-	data = dataTypeName(".");
-	sortTime(data, flags);
-	printBase(data);
-	listDel(data);
-}
-
-void	printDashl(t_ls *data, is_set *flags)
-{
-	data = dataTypeName(".");
-	sortAscii(data);
-	printEverything(data, flags);
-	listDel(data);
 }
 
 void	printBasic(t_ls *data)
