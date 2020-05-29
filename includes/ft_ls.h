@@ -94,7 +94,8 @@ void	printBasic(t_ls *data);
 void	listDel(t_ls *data);
 is_set	*setFlags(void);
 void	multipleFlags(t_ls *data, is_set *flags);
-// void	freeFlags(is_set *flags);
+void	freeFlags(is_set *flags);
+void	initMain(int ac, char **av, int avi, t_ls *data, is_set *flags);
 // t_ls	*store_recursive(char *path);
 
 #endif

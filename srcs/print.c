@@ -108,7 +108,9 @@ void	printBasic(t_ls *data)
 
 void	multipleFlags(t_ls *data, is_set *flags)
 {
-	if (flags->dash_a)
+	if (flags->dash_R)
+		dash_R(".", 0);
+	else if (flags->dash_a)
 	{
 		data = dataTypeName(".");
 		sortAscii(data);
@@ -134,6 +136,4 @@ void	multipleFlags(t_ls *data, is_set *flags)
 		else if (!flags->dash_l)
 			printBase(data);
 	}
-	else if (flags->dash_R)
-		dash_R(".", 0);
 }

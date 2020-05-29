@@ -18,20 +18,14 @@ int		main(int ac, char **av)
 		flagCheck(ac, av, flags, data);
 		if (findDash(av[avi], flags) == 3)
 		{
-			while (avi < ac)
-			{
-				data = dataTypeName(".");
-				checkExists(av[avi], data, flags);
-				listDel(data);
-				avi++;
-			}
-				return (0);
+			initMain(ac, av, avi, data, flags);
+			return (0);
 		}
 		else
 			multipleFlags(data, flags);
 	}
 	listDel(data);
 	// freeFlags(flags);
-	// system("leaks ft_ls");
+	system("leaks ft_ls");
 	return (0);
 }
