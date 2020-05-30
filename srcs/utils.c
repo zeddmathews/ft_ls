@@ -4,7 +4,6 @@ is_set	*setFlags(void)
 {
 	is_set  *flags;
 
-	// flags = NULL;
 	flags = (is_set *)malloc(sizeof(is_set));
 	flags->dash_a = 0;
 	flags->dash_r = 0;
