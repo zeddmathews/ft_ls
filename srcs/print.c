@@ -108,4 +108,5 @@ void	multipleFlags(t_ls *data, is_set *flags)
 		else if (!flags->dash_l)
 			printBase(data);
 	}
+	listDel(data);
 }

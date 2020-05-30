@@ -24,8 +24,6 @@ int		main(int ac, char **av)
 		else
 			multipleFlags(data, flags);
 	}
-	listDel(data);
-	// freeFlags(flags);
 	system("leaks ft_ls");
 	return (0);
 }
