@@ -7,9 +7,10 @@ void	invalidFOrD(char *flagString)
 	ft_putendl(": No such file or directory");
 }
 
-void	illegalOption(char *flagString)
+void	illegalOption(char flag)
 {
-	(void)flagString;
-	ft_putendl("ft_ls: illegal option -- -");
+	ft_putstr("ft_ls: illegal option -- ");
+	ft_putchar(flag);
+	ft_putchar('\n');
 	ft_putendl("usage: ft_ls [-Ralrt] [file ...]");
 }

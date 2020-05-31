@@ -27,6 +27,7 @@ void	checkExists(char *flagString, t_ls *data, is_set *flags)
 		}
 		data = data->fw;
 	}
+	invalidFOrD(flagString);
 }
 
 void	checkExists1(char *flagString, t_ls *data)

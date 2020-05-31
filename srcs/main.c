@@ -24,6 +24,6 @@ int		main(int ac, char **av)
 		else
 			multipleFlags(data, flags);
 	}
-	system("leaks ft_ls");
+	// system("leaks ft_ls");
 	return (0);
 }

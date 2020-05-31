@@ -43,7 +43,7 @@ void	flagCheck(int ac, char **av, is_set *flags, t_ls *data)
 		}
 		if (doubleDash(ac, av[avi]) == 1)
 		{
-			illegalOption(av[avi]);
+			illegalOption(av[avi][1]);
 			exit (1);
 		}
 		flagCheck1(av, avi, flags, data);
@@ -53,8 +53,20 @@ void	flagCheck(int ac, char **av, is_set *flags, t_ls *data)
 
 void	flagCheck1(char **av, int avi, is_set *flags, t_ls *data)
 {
+	int i;
+
+	i = 1;
 	if (av[avi][0] == '-')
 		{
+			while (av[avi][i])
+			{
+				if (!ft_strchr("larRt", av[avi][i]))
+				{
+					illegalOption(av[avi][i]);
+					exit (1);
+				}
+				i++;
+			}
 			if (ft_strchr(av[avi], 'a'))
 				flags->dash_a = 1;
 			if (ft_strchr(av[avi], 'r'))

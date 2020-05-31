@@ -85,7 +85,7 @@ void	freeFlags(is_set *flags);
 void	initMain(int ac, char **av, int avi, t_ls *data, is_set *flags);
 int		findDash(char *flagString, is_set *flags);
 int		doubleDash(int ac, char *flagString);
-void	illegalOption(char *flagString);
+void	illegalOption(char flag);
 void	invalidFOrD(char *flagString);
 // t_ls	*store_recursive(char *path);
 
