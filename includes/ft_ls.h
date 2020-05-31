@@ -76,6 +76,7 @@ void	dash_R(char *path, int indent);
 void	checkExists(char *flagString, t_ls *data, is_set *flags);
 void	checkExists1(char *flagString, t_ls *data);
 void	checkExists2(char *flagString, t_ls *data);
+void	checkExists3(char *flagString, t_ls *data, is_set *flags);
 // int		argCheck(int ac, char **av, is_set *flags, t_ls *data);
 void	printBasic(t_ls *data);
 void	listDel(t_ls *data);
