@@ -3,17 +3,17 @@
 void	printBlocks(t_ls *store)
 {
 	t_ls *data = store;
-	int num;
+	int total;
 	struct stat blocks;
-	num = 0;
+
+	total = 0;
 	while(data->fw != NULL)
 	{
-		if(stat(data->fileName,&blocks) < 0)
-			return ;
-		num += blocks.st_blocks;
+		lstat(data->fileName,&blocks);
+		total = total + blocks.st_blocks;
 		data = data->fw;
 	}
 	ft_putstr("total ");
-	ft_putnbr(num);
+	ft_putnbr(total);
 	ft_putchar('\n');
 }

@@ -17,49 +17,48 @@ void	printPermissions(struct stat permissions)
 
 void	printIDData(struct stat idData)
 {
-	struct group	*group;
-	struct passwd	*pwd;
+	register struct group	*group;
+	register struct passwd	*pwd;
 
-	if ((pwd = getpwuid(idData.st_uid)) != NULL)
-	{
-		ft_putstr(pwd->pw_name);
-		ft_putchar(' ');
-	}
-	if ((group = getgrgid(idData.st_gid)) != NULL)
-	{
-		ft_putstr(group->gr_name);
-		ft_putchar(' ');
-	}
+	pwd = getpwuid(idData.st_uid);
+	group = getgrgid(idData.st_gid);
+	ft_putstr(pwd->pw_name);
+	ft_putchar(' ');
+	ft_putstr(group->gr_name);
+	ft_putchar(' ');
 }
 
 void	printTime(struct stat timeData)
 {
-	char	*time;
+	char			*time;
 
-	time = ctime(&timeData.st_mtime);
-	time = time + 4;
+	time = ctime(&timeData.st_mtime) + 4;
+	time[12] = '\0';
 	printNString(time, 12);
 }
 
 void	userData(char *path)
 {
 	struct stat buff;
+	int nlink;
+	int size;
 
-	if(stat(path,&buff) < 0)
-		return ;
+	lstat(path,&buff);
+	nlink = buff.st_nlink;
+	size = buff.st_size;
 	printPermissions(buff);
-	ft_putnbr(buff.st_nlink);
+	ft_putnbr(nlink);
 	ft_putchar('\t');
 	printIDData(buff);
 	if (ft_numlen(buff.st_size) < 2)
 	{
-		ft_putnbr(buff.st_size);
+		ft_putnbr(size);
 		ft_putchar(' ');
 		ft_putchar('\t');
 	}
 	else
 	{
-		ft_putnbr(buff.st_size);
+		ft_putnbr(size);
 		ft_putchar('\t');
 	}
 	printTime(buff);
