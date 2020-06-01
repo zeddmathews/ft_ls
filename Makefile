@@ -16,14 +16,18 @@ LIBFT_PATH = ./libft/
 
 SRC_PATH = ./srcs/
 
-SRCS = flag_things.c \
-	  is_flag.c \
+SRCS = parsing.c \
+	  errors.c \
 	  store.c \
-	  sorting.c \
+	  sort.c \
 	  print.c \
 	  main.c \
+	  dash_l.c \
+	  more_dash_l.c \
+	  utils.c \
+	  checkExists.c \
 
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall  -Wextra
 
 INC = -I ./includes/ft_ls.h -I $(LIBFT_PATH)libft.h
 

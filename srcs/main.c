@@ -1,37 +1,29 @@
 #include "../includes/ft_ls.h"
 
-int	main(int ac, char **av)
+int		main(int ac, char **av)
 {
-	t_ls	*hold;
-	if (ac >= 2 && av[1][1] == 'a')
+	t_ls *data;
+	is_set *flags;
+	int avi;
+
+	data = NULL;
+	flags = NULL;
+	avi = 1;
+	if (ac == 1)
+		printBasic(data);
+	else if (ac > 1)
 	{
-		hold = storeTypeName(".");
-		sortAscii(hold);
-		printAll(hold);
-		return (0);
+		data = dataTypeName(".");
+		flags = setFlags();
+		flagCheck(ac, av, flags, data);
+		if (findDash(av[avi], flags) == 3)
+		{
+			initMain(ac, av, avi, data, flags);
+			return (0);
+		}
+		else
+			multipleFlags(data, flags, ".");
 	}
-	else if (ac >= 2 && av[1][1] == 'r')
-	{
-		hold = storeTypeName(".");
-		sortRevAscii(hold);
-		printAll(hold);
-		return (0);
-	}
-	// else if (ac >= 2 && av[1][1] == 'R')
-	// {
-	// 	hold = store_recursive(".");
-	// 	sort_a(hold);
-	// 	print_a(hold);
-	// 	return (0);
-	// }
-	else if (ac == 1)
-	{
-		hold = storeTypeName(".");
-		sortAscii(hold);
-		printBase(hold);
-		return (0);
-	}
-	else
-		ft_putendl("You done fucked up");
+	// system("leaks ft_ls");
 	return (0);
 }

@@ -1,19 +1,18 @@
 #include "../includes/ft_ls.h"
 
-int		validFlags(char *flagString)
+void	invalidFOrD(char *flagString)
 {
-	int i;
+	ft_putstr("ft_ls: ");
+	ft_putstr(flagString);
+	ft_putendl(": No such file or directory");
+	exit (1);
+}
 
-	i = 0;
-	while (flagString[i])
-	{
-		if (!(ft_strchr("larRt", flagString[i])))
-		{
-			ft_putendl(ft_strjoin("ft_ls: invalid option -- '", flagString[i]));
-			ft_putchar("'");
-			exit (1);
-		}
-		i++;
-	}
-	return (1);
+void	illegalOption(char flag)
+{
+	ft_putstr("ft_ls: illegal option -- ");
+	ft_putchar(flag);
+	ft_putchar('\n');
+	ft_putendl("usage: ft_ls [-Ralrt] [file ...]");
+	exit (1);
 }
