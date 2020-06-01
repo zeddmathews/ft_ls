@@ -81,7 +81,7 @@ void	checkExists3(char *flagString, t_ls *data, is_set *flags);
 void	printBasic(t_ls *data);
 void	listDel(t_ls *data);
 is_set	*setFlags(void);
-void	multipleFlags(t_ls *data, is_set *flags);
+void	multipleFlags(t_ls *data, is_set *flags, char *flagString);
 void	freeFlags(is_set *flags);
 void	initMain(int ac, char **av, int avi, t_ls *data, is_set *flags);
 int		findDash(char *flagString, is_set *flags);

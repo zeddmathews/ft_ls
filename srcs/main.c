@@ -22,7 +22,7 @@ int		main(int ac, char **av)
 			return (0);
 		}
 		else
-			multipleFlags(data, flags);
+			multipleFlags(data, flags, ".");
 	}
 	// system("leaks ft_ls");
 	return (0);

@@ -58,6 +58,8 @@ void	flagCheck1(char **av, int avi, is_set *flags, t_ls *data)
 	i = 1;
 	if (av[avi][0] == '-')
 		{
+			if (ft_strlen(av[avi]) == 1)
+				invalidFOrD("-");
 			while (av[avi][i])
 			{
 				if (!ft_strchr("larRt", av[avi][i]))

@@ -11,10 +11,10 @@ void	checkExists(char *flagString, t_ls *data, is_set *flags)
 		if (wordMatch(flagString, data->fileName) == 0)
 		{
 			lstat(flagString, &permissions);
-			if (S_ISDIR(permissions.st_mode) && flags->dash_l)
-				checkExists3(flagString, data, flags);
 			if (S_ISDIR(permissions.st_mode))
-				checkExists1(flagString, data);
+				checkExists3(flagString, data, flags);
+			// if (S_ISDIR(permissions.st_mode))
+			// 	checkExists1(flagString, data);
 			if (flags->dash_l)
 				checkExists2(flagString, data);
 			else
@@ -67,10 +67,7 @@ void	checkExists3(char *flagString, t_ls *data, is_set *flags)
 		data = data->fw;
 	if (wordMatch(data->fileName, flagString) == 0)
 	{
-		data = dataTypeName(flagString);
-		sortAscii(data);
-		// printBlocks(data);
-		printEverything(data, flags);
+		multipleFlags(data, flags, flagString);
 		exit (1);
 	}
 	else

@@ -78,13 +78,13 @@ void	printBasic(t_ls *data)
 	listDel(data);
 }
 
-void	multipleFlags(t_ls *data, is_set *flags)
+void	multipleFlags(t_ls *data, is_set *flags, char *flagString)
 {
 	if (flags->dash_R)
-		dash_R(".", 0);
+		dash_R(flagString, 0);
 	else if (flags->dash_a)
 	{
-		data = dataTypeName(".");
+		data = dataTypeName(flagString);
 		sortAscii(data);
 		if (flags->dash_r)
 			sortRevList(data);
@@ -97,7 +97,7 @@ void	multipleFlags(t_ls *data, is_set *flags)
 	}
 	else if (!flags->dash_a)
 	{
-		data = dataTypeName(".");
+		data = dataTypeName(flagString);
 		sortAscii(data);
 		if (flags->dash_r)
 			sortRevList(data);
